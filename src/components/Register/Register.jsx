@@ -21,9 +21,12 @@ const Register = () => {
     }
   return (
     <form onSubmit={onSubmit}>
-        <input type="text" name="name" value={name} onChange={onChange} />
-        <input type="email" name="email" value={email} onChange={onChange}/>
-        <input type="password" name="password" value={password} onChange={onChange}/>
+        <label htmlFor="name">Name: </label>
+        <input type="text" name="name" value={name} onChange={onChange} /><br />
+        <label htmlFor="email">Email: </label>
+        <input type="email" name="email" value={email} onChange={onChange}/><br />
+        <label htmlFor="password">Password: </label>
+        <input type="password" name="password" value={password} onChange={onChange}/> <br />
         <button type="submit">Register</button>
     </form>
   )
