@@ -58,3 +58,6 @@ export const login = createAsyncThunk("auth/login", async (user,thunkAPI) => {
     return thunkAPI.rejectWithValue(msgError)
   }
 });
+
+
+export const { reset } = authSlice.actions;

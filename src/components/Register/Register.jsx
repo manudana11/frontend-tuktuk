@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { register } from '../../features/auth/authSlice';
 import './Register.scss';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -26,25 +27,33 @@ const Register = () => {
         console.log('formData', formData)
     }
   return (
-    <div className='form-box'>
-        <form onSubmit={onSubmit} className='form'>
-            <span className="title">Sign up</span>
-            <span className="subtitle">Create a free account with your email.</span>
-            <div className='form-container'>
-                <input type="text" name="name" id='name' className='input' placeholder='Insert your name' value={name} onChange={onChange} /><br />
-                <input type="text" name="userName" id='userName' className='input' placeholder='Insert your username' value={userName} onChange={onChange} /><br />
-                <input type="email" name="email" id='email' className='input' placeholder='Insert your email' value={email} onChange={onChange}/><br />
-                <input type="date" name="dateOfBirth" id="dateOfBirth" className="input" value={dateOfBirth} onChange={onChange} /><br />
-                <label htmlFor="photo">Profile picture: </label>
-                <input type="file" name="profilePic" id='profilePic' className='input' value={profilePic} onChange={onChange}/><br />
-                <input type="password" name="password" id='password' className='input' placeholder='Insert your password' value={password} onChange={onChange}/> <br />
-            </div>
-            <button type="submit">Register</button>
-        </form>
-        <div className="form-section">
-            <p>Have an account? <a href="">Log in</a> </p>
-        </div>
+    <form className="form" onSubmit={onSubmit}>
+    <p className="title">Register</p>
+    <p className="message">Signup now and get full access to our app.</p>
+    <div className="flex">
+        <label>
+            <input required placeholder="Insert your name" type="text" className="input" name="name" id="name" value={name} onChange={onChange} />
+        </label>
+        <label>
+            <input required placeholder="Insert your username" type="text" className="input" name="userName" id="userName" value={userName} onChange={onChange} />
+        </label>
     </div>
+    <label>
+        <input required placeholder="Insert your email" type="email" className="input" name="email" id="email" value={email} onChange={onChange} />
+    </label>
+    <label>
+        <input required type="date" className="input" name="dateOfBirth" id="dateOfBirth" value={dateOfBirth} onChange={onChange} />
+    </label>
+    <label>
+        <input type="file" className="input" name="profilePic" id="profilePic" value={profilePic} onChange={onChange} />
+    </label>
+    <label>
+        <input required placeholder="Insert your password" type="password" className="input" name="password" id="password" value={password} onChange={onChange} />
+    </label>
+    <button className="submit" type="submit">Submit</button>
+    <p className="signin">Already have an account? <a href="/login">Signin</a></p>
+</form>
+
   )
 }
 export default Register

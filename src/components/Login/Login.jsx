@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Login.scss'
 import {Link, useNavigate} from 'react-router-dom'
-import { login } from '../../features/auth/authSlice'
+import { login, reset } from '../../features/auth/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { notification } from 'antd'
 
@@ -43,7 +43,6 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log('formData', formData);
     dispatch(login(formData))
   }
 
@@ -53,8 +52,8 @@ const Login = () => {
         <span className="title">Login</span>
         <span className="subtitle">Welcome back.</span>
         <div className="form-container">
-          <input type="email" name='email' className="input" placeholder="Email" onChange={onChange}/>
-          <input type="password" name='password' className="input" placeholder="Password" onChange={onChange}/>
+          <input type="email" name='email' className="input" placeholder="Email" value={email} onChange={onChange}/>
+          <input type="password" name='password' className="input" placeholder="Password" value={password} onChange={onChange}/>
         </div>
         <button>Login</button>
     </form>
