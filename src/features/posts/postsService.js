@@ -7,8 +7,12 @@ const getAllPosts = async () => {
   return res.data;
 };
 
-const createPost = async () => {
-  const res = await axios.post(API_URL + '/', post);
+const createPost = async (post, token) => {
+  const res = await axios.post(API_URL + '/', post, {
+    headers: {
+      Authorization: token
+    }
+  });
   return res.data
 };
 

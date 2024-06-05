@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from '../../features/posts/postsSlice';
 
 const CreatePost = () => {
@@ -10,7 +10,8 @@ const CreatePost = () => {
     })
 
     const { image, caption, location } = formData;
-    const dispach = useDispatch()
+    const dispatch = useDispatch();
+    const token = useSelector((state) => state.auth.token);
 
     const onChange = (e) => {
         setFormData({
@@ -20,7 +21,7 @@ const CreatePost = () => {
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        dispach(createPost(formData))
+        dispatch(createPost(formData, token))
         console.log('formData', formData)
     }
 

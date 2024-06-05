@@ -3,6 +3,7 @@ import postsService from "./postsService";
 
 const initialState = {
   posts: [],
+  post: null,
 };
 
 export const postsSlice = createSlice({
@@ -16,7 +17,6 @@ export const postsSlice = createSlice({
   }
 });
 
-export default postsSlice.reducer;
 
 export const getAllPosts = createAsyncThunk('posts/getAllPosts', async () => {
   try {
@@ -25,3 +25,16 @@ export const getAllPosts = createAsyncThunk('posts/getAllPosts', async () => {
     console.error(error);
   }
 })
+
+export const createPost = createAsyncThunk('posts/createPost', async (post, thunkAPI) => {
+  const token = thunkAPI.getState().auth.token;
+  try {
+    console.log(post, token);
+    return await postsService.createPost(post, token);
+  } catch (error) {
+    console.error(error);
+  }
+})
+
+
+export default postsSlice.reducer;
