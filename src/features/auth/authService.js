@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://backend-tuktuk-1.onrender.com/users";
+const API_URL = "http://localhost:3000/users";
 
 const register = async (user) => {
   const res = await axios.post(API_URL, user);
