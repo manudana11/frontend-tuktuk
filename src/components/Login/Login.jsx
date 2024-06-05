@@ -1,22 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.scss'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { login } from '../../features/auth/authSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { notification } from 'antd'
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
+  
   const {email, password} = formData
+  const {message, isSuccess, isError} = useSelector((state) => state.auth)
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(isSuccess){
+      notification.success({
+        message: 'Success',
+        description: message
+      })
+      navigate('/')
+    }
+    if(isError){
+      notification.error({
+        message: 'Error',
+        description: message
+      })
+    }
+    dispatch(reset())
+  },[isSuccess, message, isError])
+
   const onChange = (e) =>{
-    setFormData((prevState) => ({
+    setFormData ({
       ...formData,
       [e.target.name]: e.target.value,
-    }))
+    })
   }
-  const dispatch = useDispatch()
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -30,8 +53,8 @@ const Login = () => {
         <span className="title">Login</span>
         <span className="subtitle">Welcome back.</span>
         <div className="form-container">
-          <input type="email" className="input" placeholder="Email" onChange={onChange}/>
-          <input type="password" className="input" placeholder="Password" onChange={onChange}/>
+          <input type="email" name='email' className="input" placeholder="Email" onChange={onChange}/>
+          <input type="password" name='password' className="input" placeholder="Password" onChange={onChange}/>
         </div>
         <button>Login</button>
     </form>

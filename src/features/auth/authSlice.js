@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from './authService'
 
 
-const token = localStorage.getItem("token") || null;
+const token = localStorage.getItem("token") || '';
 const user = JSON.parse(localStorage.getItem("user")) || null;
 
 const initialState = {
@@ -32,7 +32,7 @@ export const authSlice = createSlice({
       state.isSuccess = true;
     })
     .addCase(login.rejected, (state, action) =>{
-      state.message = action.payload.message;
+      state.message = action.payload;
       state.isError = true
     })
   }

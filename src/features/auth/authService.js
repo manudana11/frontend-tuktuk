@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/users";
+const API_URL = "https://backend-tuktuk.onrender.com/users";
 
 const register = async (user) => {
   const res = await axios.post(API_URL, user);
   return res.data;
 };
 
-const login = async (userData) => {
-  const res = await axios.post(API_URL + '/login', userData);
+const login = async (user) => {
+  const res = await axios.post(API_URL + '/login', user);
   if(res.data){
     localStorage.setItem('user', JSON.stringify(res.data.user));
-    localStorage.setItem('token', JSON.stringify(res.data.token));
+    localStorage.setItem('token', res.data.token);
   }
   return res.data
 }
