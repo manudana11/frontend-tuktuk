@@ -35,10 +35,12 @@ export const authSlice = createSlice({
       state.message = action.payload;
       state.isError = true
     })
+    .addCase(logout.fulfilled, (state) =>{
+      state.user = null,
+      state.token = ''
+    })
   }
 });
-
-export default authSlice.reducer;
 
 export const register = createAsyncThunk('auth/register', async (user) => {
   try {
@@ -59,5 +61,14 @@ export const login = createAsyncThunk("auth/login", async (user,thunkAPI) => {
   }
 });
 
+export const logout = createAsyncThunk("auth/logout", async () => {
+  try {
+    console.log("authslice");
+    return await authService.logout();
+  } catch (error) {
+    console.error(error);
+  }
+});
 
+export default authSlice.reducer;
 export const { reset } = authSlice.actions;
