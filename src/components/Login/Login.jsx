@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Login.scss'
 import {Link} from 'react-router-dom'
+import { login } from '../../features/auth/authSlice'
+import { useDispatch } from 'react-redux'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,15 +11,17 @@ const Login = () => {
   })
   const {email, password} = formData
   const onChange = (e) =>{
-    setFormData({
+    setFormData((prevState) => ({
       ...formData,
       [e.target.name]: e.target.value,
-    })
+    }))
   }
+  const dispatch = useDispatch()
 
   const onSubmit = (e) => {
     e.preventDefault()
     console.log('formData', formData);
+    dispatch(login(formData))
   }
 
   return (
