@@ -26,33 +26,34 @@ const Register = () => {
         dispach(register(formData))
         console.log('formData', formData)
     }
-    return (
-        <form className="form" onSubmit={onSubmit}>
-            <p className="title">Register</p>
-            <p className="message">Signup now and get full access to our app.</p>
-            <div className="flex">
-                <label>
-                    <input required placeholder="Insert your name" type="text" className="input" name="name" id="name" value={name} onChange={onChange} />
-                </label>
-                <label>
-                    <input required placeholder="Insert your username" type="text" className="input" name="userName" id="userName" value={userName} onChange={onChange} />
-                </label>
-            </div>
-            <label>
-                <input required placeholder="Insert your email" type="email" className="input" name="email" id="email" value={email} onChange={onChange} />
-            </label>
-            <label>
-                <input required type="date" className="input" name="dateOfBirth" id="dateOfBirth" value={dateOfBirth} onChange={onChange} />
-            </label>
-            <label>
-                <input required type="file" className="input" name="profilePic" id="profilePic" value={profilePic} onChange={onChange} />
-            </label>
-            <label>
-                <input required placeholder="Insert your password" type="password" className="input" name="password" id="password" value={password} onChange={onChange} />
-            </label>
-            <button className="submit" type="submit">Submit</button>
-            <p className="signin">Already have an account? <a href="/login">Signin</a></p>
-        </form>
-    )
+  return (
+    <form className="form" onSubmit={onSubmit}>
+    <p className="title">Register</p>
+    <p className="message">Signup now and get full access to our app.</p>
+    <div className="flex">
+        <label>
+            <input required placeholder="Insert your name" type="text" className="input" name="name" id="name" value={name} onChange={onChange} />
+        </label>
+        <label>
+            <input required placeholder="Insert your username" type="text" className="input" name="userName" id="userName" value={userName} onChange={onChange} />
+        </label>
+    </div>
+    <label>
+        <input required placeholder="Insert your email" type="email" className="input" name="email" id="email" value={email} onChange={onChange} />
+    </label>
+    <label>
+        <input required type="date" className="input" name="dateOfBirth" id="dateOfBirth" value={dateOfBirth} onChange={onChange} />
+    </label>
+    <label>
+        <input required type="file" className="input" name="profilePic" id="profilePic" value={profilePic} onChange={onChange} />
+    </label>
+    <label>
+        <input required placeholder="Insert your password" type="password" className="input" name="password" id="password" value={password} onChange={onChange} />
+    </label>
+    <button className="submit" type="submit">Submit</button>
+    <p className="signin">Already have an account? <a href="/login">Signin</a></p>
+</form>
+
+  )
 }
 export default Register
