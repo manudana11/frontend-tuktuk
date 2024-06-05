@@ -23,7 +23,7 @@ const Login = () => {
         message: 'Success',
         description: message
       })
-      navigate('/')//CAMBAIAR AL FEED CUANDO SE HAGA EL LOGIN
+      navigate('/profile')//CAMBAIAR AL FEED CUANDO SE HAGA EL LOGIN
     }
     if(isError){
       notification.error({
