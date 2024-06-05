@@ -27,17 +27,17 @@ const Register = () => {
         <div className='register-form'>
             <form onSubmit={onSubmit}>
                 <label htmlFor="name">Name: </label>
-                <input type="text" name="name" value={name} onChange={onChange} /><br />
+                <input type="text" name="name" id='name' value={name} onChange={onChange} /><br />
                 <label htmlFor="userName">Username: </label>
-                <input type="text" name="userName" value={userName} onChange={onChange} /><br />
+                <input type="text" name="userName" id='userName' value={userName} onChange={onChange} /><br />
                 <label htmlFor="email">Email: </label>
-                <input type="email" name="email" value={email} onChange={onChange} /><br />
+                <input type="email" name="email" id='email' value={email} onChange={onChange} /><br />
                 <label htmlFor="dateOfBirth">Date of Birth: </label>
-                <input type="date" name="dateOfBirth" value={dateOfBirth} onChange={onChange} /><br />
+                <input type="date" name="dateOfBirth" id='dateOfBirh' value={dateOfBirth} onChange={onChange} /><br />
                 <label htmlFor="profilePic">Profile picture: </label>
-                <input type="file" name="profilePic" value={profilePic} onChange={onChange} /><br />
+                <input type="file" name="profilePic" id='profilePic' value={profilePic} onChange={onChange} /><br />
                 <label htmlFor="password">Password: </label>
-                <input type="password" name="password" value={password} onChange={onChange} /> <br />
+                <input type="password" name="password" id='password' value={password} onChange={onChange} /> <br />
                 <button type="submit">Register</button>
             </form>
         </div>
