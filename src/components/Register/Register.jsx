@@ -45,7 +45,7 @@ const Register = () => {
         <input required type="date" className="input" name="dateOfBirth" id="dateOfBirth" value={dateOfBirth} onChange={onChange} />
     </label>
     <label>
-        <input required type="file" className="input" name="profilePic" id="profilePic" value={profilePic} onChange={onChange} />
+        <input type="file" className="input" name="profilePic" id="profilePic" value={profilePic} onChange={onChange} />
     </label>
     <label>
         <input required placeholder="Insert your password" type="password" className="input" name="password" id="password" value={password} onChange={onChange} />
