@@ -4,6 +4,7 @@ import Home from './components/Home/Home'
 import Register from './components/Register/Register'
 import Login from './components/Login/Login'
 import Footer from './components/Footer/Footer'
+import CreatePost from './components/CreatePost/CreatePost'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/register' element={<Register />} />
+          <Route path='/createPost' element={<CreatePost />} />
           <Route path='/login' element={<Login />} />
         </Routes>
         <div className='space'></div>

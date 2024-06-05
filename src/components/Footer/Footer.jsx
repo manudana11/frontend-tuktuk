@@ -11,6 +11,7 @@ const Footer = () => {
         <nav className='footer-div'>
             <div className='links-div'>
             <Link to='/'>Home</Link>
+            <Link to='/createPost'>CP</Link>
             <Link to='/login'>Login</Link>
             <Link to='/register'>Register</Link>
             </div>

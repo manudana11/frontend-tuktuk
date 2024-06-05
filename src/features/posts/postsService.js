@@ -7,8 +7,14 @@ const getAllPosts = async () => {
   return res.data;
 };
 
+const createPost = async () => {
+  const res = await axios.post(API_URL + '/', post);
+  return res.data
+};
+
 const postsService = {
     getAllPosts,
+    createPost,
 };
 
 export default postsService;
