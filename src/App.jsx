@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.scss'
 import {ChakraProvider} from '@chakra-ui/react'
+import Welcome from './components/Welcome/Welcome'
 import Home from './components/Home/Home'
 import Register from './components/Register/Register'
 import Login from './components/Login/Login'
@@ -16,6 +17,7 @@ function App() {
     <ChakraProvider>
       <BrowserRouter>
         <Routes>
+          <Route path='/welcome' element={<Welcome/>} />
           <Route path='/' element={<Home/>} />
           <Route path='/register' element={<Register />} />
           <Route path='/createPost' element={<CreatePost />} />
