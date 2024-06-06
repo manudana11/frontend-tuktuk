@@ -22,8 +22,9 @@ const Footer = () => {
     <div className='footer-container'>
       <nav className='footer-div'>
       <span>
-        <Link to='/welcome'>Welcome</Link>
+        <Link to='/'>Welcome</Link>
       </span>
+      
       {/* <input type="text" name='search' onKeyUp={handleSearch} /> */}
       {user ? (
         <>
@@ -41,9 +42,6 @@ const Footer = () => {
         <>
           <span>
             <Link to='/login'>Login</Link>
-          </span>
-          <span>
-            <Link to='/register'>Register</Link>
           </span>
         </>
       

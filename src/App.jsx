@@ -17,8 +17,8 @@ function App() {
     <ChakraProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/welcome' element={<Welcome/>} />
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Welcome/>} />
+          <Route path='/home' element={<Home/>} />
           <Route path='/register' element={<Register />} />
           <Route path='/createPost' element={<CreatePost />} />
           <Route path='/login' element={<Login />} />
