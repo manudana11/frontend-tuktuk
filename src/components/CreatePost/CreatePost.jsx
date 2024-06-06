@@ -1,39 +1,26 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from '../../features/posts/postsSlice';
+import { notification } from 'antd';
 
 const CreatePost = () => {
     const token = useSelector((state) => state.auth.token);
-    const [formData, setFormData] = useState({
-        imgPost: [],
-        caption: '',
-        location: '',
-        Authorization: token
-    })
 
-    const { imgPost, caption, location } = formData;
     const dispatch = useDispatch();
 
-    const onChange = (e) => {
-        if (e.target.name === 'imgPost') {
-            setFormData({
-                ...formData,
-                [e.target.name]: e.target.files[0],
-            });
-        } else {
-            setFormData({
-                ...formData,
-                [e.target.name]: e.target.value,
-            });
-        }
-    };
     const onSubmit = (e) => {
         e.preventDefault();
-        const formDataObj = new FormData();
-        formDataObj.append('imgPost', imgPost);
-        formDataObj.append('caption', caption);
-        formDataObj.append('location', location);
-        dispatch(createPost(formData, token))
+        const formData = new FormData();
+        if (e.target.image.files[0]) formData.set('image', e.target.image.files[0]);
+        formData.set('caption', e.target.caption.value);
+        formData.set('location', e.target.location.value);
+        
+        dispatch(createPost(formData, token)).then(res => {
+            notification.success({message: 'Post created successfully!'})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
         console.log('formData', formData)
     }
 
@@ -42,13 +29,13 @@ const CreatePost = () => {
             <p className="title">Create post</p>
             <p className="message">Your post details down here</p>
                 <label>
-                    <input required type="file" className="input" name="imgPost" id="imgPost" value={imgPost} onChange={onChange} />
+                    <input required type="file" className="input" name="image" id="image" />
                 </label>
                 <label>
-                    <input required placeholder="Caption" type="text" className="input" name="caption" id="caption" value={caption} onChange={onChange} />
+                    <input required placeholder="Caption" type="text" className="input" name="caption" id="caption" />
                 </label>
             <label>
-                <input required placeholder="Location" type="text" className="input" name="location" id="location" value={location} onChange={onChange} />
+                <input required placeholder="Location" type="text" className="input" name="location" id="location" />
             </label>
             
             <button className="submit" type="submit">Submit</button>

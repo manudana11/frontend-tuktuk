@@ -9,6 +9,7 @@ const Profile = () => {
     const dispatch = useDispatch()
 
   return (
+    
     <Wrap spacing='20px'>
         <WrapItem>
             <Center>
