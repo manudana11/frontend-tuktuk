@@ -3,24 +3,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from '../../features/posts/postsSlice';
 
 const CreatePost = () => {
+    const token = useSelector((state) => state.auth.token);
     const [formData, setFormData] = useState({
-        image: '',
+        imgPost: [],
         caption: '',
         location: '',
+        Authorization: token
     })
 
-    const { image, caption, location } = formData;
+    const { imgPost, caption, location } = formData;
     const dispatch = useDispatch();
-    const token = useSelector((state) => state.auth.token);
 
     const onChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+        if (e.target.name === 'imgPost') {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.files[0],
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value,
+            });
+        }
     };
     const onSubmit = (e) => {
         e.preventDefault();
+        const formDataObj = new FormData();
+        formDataObj.append('imgPost', imgPost);
+        formDataObj.append('caption', caption);
+        formDataObj.append('location', location);
         dispatch(createPost(formData, token))
         console.log('formData', formData)
     }
@@ -30,7 +42,7 @@ const CreatePost = () => {
             <p className="title">Create post</p>
             <p className="message">Your post details down here</p>
                 <label>
-                    <input required type="file" className="input" name="image" id="image" value={image} onChange={onChange} />
+                    <input required type="file" className="input" name="imgPost" id="imgPost" value={imgPost} onChange={onChange} />
                 </label>
                 <label>
                     <input required placeholder="Caption" type="text" className="input" name="caption" id="caption" value={caption} onChange={onChange} />
