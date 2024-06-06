@@ -42,6 +42,8 @@ export const authSlice = createSlice({
   }
 });
 
+export default authSlice.reducer;
+
 export const register = createAsyncThunk('auth/register', async (user) => {
   try {
     console.log(user)
@@ -70,5 +72,4 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-export default authSlice.reducer;
 export const { reset } = authSlice.actions;

@@ -53,7 +53,6 @@ const Register = () => {
     <button className="submit" type="submit">Submit</button>
     <p className="signin">Already have an account? <a href="/login">Signin</a></p>
 </form>
-
   )
 }
 export default Register
