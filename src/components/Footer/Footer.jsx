@@ -1,7 +1,6 @@
 import React from 'react'
 import './Footer.scss'
 import { Link } from 'react-router-dom'
-import {logout} from '../../features/auth/authSlice'
 
 const Footer = () => {
 
