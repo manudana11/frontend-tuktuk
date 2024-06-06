@@ -42,9 +42,6 @@ const Footer = () => {
           <span>
             <Link to='/login'>Login</Link>
           </span>
-          <span>
-            <Link to='/register'>Register</Link>
-          </span>
         </>
       
       )}
