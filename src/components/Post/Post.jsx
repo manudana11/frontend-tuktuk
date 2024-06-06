@@ -32,7 +32,7 @@ const Post = () => {
                 <div key={post._id} className="post">
                     <div className="post-header">
                         <div className="post-user">
-                            <img src={`https://backend-tuktuk.onrender.com/${post.profilePic.substring(6)}`} alt="User profile" className="post-user-image" />
+                            <img src={post.profilePic ? `https://backend-tuktuk.onrender.com/${post.userId.profilePic.substring(6)}` : 'URL_DE_IMAGEN_PREDETERMINADA'} alt="User profile" className="post-user-image" />
                             <div className="post-user-name">{post.userId.userName}</div>
                         </div>
                         <div className="post-location">{post.location}</div>
