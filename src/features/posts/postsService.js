@@ -2,8 +2,12 @@ import axios from "axios";
 
 const API_URL = "https://backend-tuktuk.onrender.com/posts";
 
-const getAllPosts = async () => {
-  const res = await axios.get(API_URL);
+const getAllPosts = async (token) => {
+  const res = await axios.get(API_URL + '/allPosts', {
+    headers: {
+      Authorization: token
+    }
+  });
   return res.data;
 };
 
