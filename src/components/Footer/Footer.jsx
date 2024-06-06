@@ -22,7 +22,7 @@ const Footer = () => {
     <div className='footer-container'>
       <nav className='footer-div'>
       <span>
-        <Link to='/'>Welcome</Link>
+        <Link to='/'></Link>
       </span>
       
       {/* <input type="text" name='search' onKeyUp={handleSearch} /> */}
