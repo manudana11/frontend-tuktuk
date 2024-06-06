@@ -2,7 +2,9 @@ import React from 'react'
 
 const Welcome = () => {
   return (
-    <div>En esta página ira el logo y el boton de login</div>
+    <div>
+        <img src="src/assets/Logo-tuktuk-sinverano.png" alt="logo-tuktuk" />
+    </div>
   )
 }
 

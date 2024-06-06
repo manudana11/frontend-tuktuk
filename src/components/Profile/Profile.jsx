@@ -1,10 +1,13 @@
 import React from 'react'
 import {Image, Button, Wrap, WrapItem, Center} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-
+import { logout } from '../../features/auth/authSlice'
+import { useDispatch } from 'react-redux'
 
 
 const Profile = () => {
+    const dispatch = useDispatch()
+
   return (
     
     <Wrap spacing='20px'>
@@ -16,7 +19,7 @@ const Profile = () => {
         <WrapItem>
             <Center w='150px' h='60px' gap={2}>
                 <Button colorScheme='teal' variant='outline'>Options</Button>
-                <Button colorScheme='teal' variant='outline'><Link to='/login'>Logout</Link></Button>
+                <Button colorScheme='teal' variant='outline'><Link to='/login' onClick={() =>{dispatch(logout())}}>Logout</Link></Button>
             </Center>
         </WrapItem>
             <Center>
