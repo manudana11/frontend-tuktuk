@@ -72,4 +72,12 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   }
 });
 
+export const getUserById = createAsyncThunk('auth/getUserById', async () => {
+  try {
+    return await authService.getUserById
+  } catch (error) {
+    console.error(error);
+  }
+})
+
 export const { reset } = authSlice.actions;

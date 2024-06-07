@@ -29,6 +29,15 @@ const logout = async () => {
   return res.data
 }
 
+const getUserById = async (user, token) => {
+  const res = await axios.get(API_URL + '/id/'+ _id, {
+    headers: {
+      Authorization:token
+    }
+  })
+  return res.data
+}
+
 const authService = {
   register,
   login,
