@@ -42,6 +42,7 @@ const authService = {
   register,
   login,
   logout,
+  getUserById
 };
 
 export default authService;

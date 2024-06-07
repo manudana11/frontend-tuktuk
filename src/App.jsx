@@ -11,7 +11,6 @@ import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import Post from './components/Post/Post'
 
-//PARA VER COMO TARJETITAS EL LOGIN Y EL REGISTER QUITAR EL CHAKRAPROVIDER
 
 function App() {
 
