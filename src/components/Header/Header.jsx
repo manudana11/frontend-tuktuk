@@ -5,9 +5,9 @@ import './Header.scss'
 
 const Header = () => {
   return (
-    <Flex as="header" width="100%" alignItems="center">
+    <Flex as="header" width="100%" alignItems="center" >
       <Box flex="1" textAlign="center">
-        <Image src="src/assets/Logo-tuktuk-pj.png" alt="logo-Tuktuk" className='logo-header' maxWidth="200px" margin="0 auto"/>
+        <Image src="src/assets/Logo-tuktuk-pj.png" alt="logo-Tuktuk" className='logo-header' maxWidth="50px" margin="0 auto"/>
       </Box>
       <Box>
         <MessageOutlined style={{ fontSize: '24px' }} />
