@@ -35,7 +35,7 @@ const Footer = () => {
             dispatch(logout());
           }}
           >
-            <Link to='/login'>Logout</Link>
+            <Link to='/'>Logout</Link>
           </span>
         </>
       ) : (

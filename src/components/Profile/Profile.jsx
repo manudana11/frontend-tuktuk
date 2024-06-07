@@ -18,7 +18,7 @@ const Profile = () => {
         <WrapItem>
             <Center w='150px' h='60px' gap={2}>
                 <Button colorScheme='teal' variant='outline'>Options</Button>
-                <Button colorScheme='teal' variant='outline'><Link to='/login' onClick={() =>{dispatch(logout())}}>Logout</Link></Button>
+                <Button colorScheme='teal' variant='outline'><Link to='/' onClick={() =>{dispatch(logout())}}>Logout</Link></Button>
             </Center>
         </WrapItem>
             <Center>
