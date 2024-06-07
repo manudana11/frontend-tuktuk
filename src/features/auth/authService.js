@@ -29,7 +29,7 @@ const logout = async () => {
   return res.data
 }
 
-const getUserById = async (user, token) => {
+const getUserById = async (token) => {
   const res = await axios.get(API_URL + '/id/'+ _id, {
     headers: {
       Authorization:token

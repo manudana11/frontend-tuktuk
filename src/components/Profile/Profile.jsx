@@ -1,15 +1,21 @@
 import React from 'react'
-import {Box, Image, Button, Wrap, WrapItem, Center} from '@chakra-ui/react'
+import {Image, Button, Wrap, WrapItem, Center, Spinner, Card, CardBody} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { logout } from '../../features/auth/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { Divider } from 'antd'
+
+
+
 
 const Profile = () => {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
-    
+    const post = useSelector((state) => state.posts)
+
+
     if(!user) {
-       return <p>Loading...</p>
+       return <Spinner color='red.500' justify='center' />
     }
 
   return (
@@ -28,6 +34,17 @@ const Profile = () => {
             <Center>
                 <Button colorScheme='teal' variant='outline'>Follow</Button>
             </Center>
+            <Divider></Divider>
+            <Card maxW='sm' className='post-container'>
+                {Array.isArray(post) && post.map((post, i) => {
+                    console.log('Post:', post);
+                    return (
+                        <CardBody key={i}>
+                            <Image boxSize='sm' src={`https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}`} alt='imgPost' />
+                        </CardBody>
+                    )
+                })}
+            </Card>
     </Wrap>
   )
 }
