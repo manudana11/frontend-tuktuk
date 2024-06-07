@@ -23,18 +23,21 @@ const Footer = () => {
     <div className='footer-container'>
       <nav className='footer-div'>
         <div className='links-div'>
+
+          {user ? (
+            <>
           <span>
             <Link to='/home'><HomeOutlined /></Link>
           </span>
           <span>
-            <Link to='/profile'><UserOutlined /></Link>
+          <Link to='/profile'><UserOutlined /></Link>
           </span>
-          {user ? (
             <span onClick={() => {
               dispatch(logout())
             }}>
               <Link to='/'>Logout</Link>
             </span>
+            </>
           ) : (
             <span>
               <Link to='/login'>Login</Link>
