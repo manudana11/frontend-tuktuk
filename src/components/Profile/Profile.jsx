@@ -11,7 +11,7 @@ import { Divider } from 'antd'
 const Profile = () => {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
-    const post = useSelector((state) => state.posts)
+    const posts = useSelector((state) => state.posts)
 
 
     if(!user) {
@@ -34,9 +34,24 @@ const Profile = () => {
             <Center>
                 <Button colorScheme='teal' variant='outline'>Follow</Button>
             </Center>
+            <WrapItem>
+                <Center>
+                    {user.posts.length} Posts
+                </Center>
+            </WrapItem>
+            <WrapItem display='flex'>
+                <Center>
+                    {user.followers.length} Followers
+                </Center>
+            </WrapItem>
+            <WrapItem display='flex'>
+                <Center>
+                    {user.following.length} Follows
+                </Center>
+            </WrapItem>
             <Divider></Divider>
             <Card maxW='sm' className='post-container'>
-                {Array.isArray(post) && post.map((post, i) => {
+                {Array.isArray(posts) && posts.map((post, i) => {
                     console.log('Post:', post);
                     return (
                         <CardBody key={i}>
@@ -44,6 +59,7 @@ const Profile = () => {
                         </CardBody>
                     )
                 })}
+                <CardBody>Me cago en tu raza, funcionaaaaaaaaa</CardBody>
             </Card>
     </Wrap>
   )
