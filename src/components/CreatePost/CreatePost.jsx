@@ -35,7 +35,7 @@ const CreatePost = () => {
                     <input required placeholder="Caption" type="text" className="input" name="caption" id="caption" />
                 </label>
             <label>
-                <input required placeholder="Location" type="text" className="input" name="location" id="location" />
+                <input placeholder="Location" type="text" className="input" name="location" id="location" />
             </label>
             
             <button className="submit" type="submit">Submit</button>

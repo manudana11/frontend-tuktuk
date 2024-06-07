@@ -9,6 +9,7 @@ import Login from './components/Login/Login'
 import Profile from './components/Profile/Profile'
 import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
+import Post from './components/Post/Post'
 
 //PARA VER COMO TARJETITAS EL LOGIN Y EL REGISTER QUITAR EL CHAKRAPROVIDER
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/createPost' element={<CreatePost />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile/>} />
+          <Route path='/allposts' element={<Post />} />
         </Routes>
         <div className='space'></div>
         <Footer/>
