@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPosts } from '../../features/posts/postsSlice';
 import './Post.scss';
 import { CommentOutlined, LikeOutlined, SendOutlined } from '@ant-design/icons';
+import { Spinner } from '@chakra-ui/react';
 
 const Post = () => {
 
@@ -15,7 +16,7 @@ const Post = () => {
 
 
     if (status === 'loading') {
-        return <div>Loading...</div>;
+        return <Spinner color="red.500" justify="center" />;
     }
 
     if (status === 'failed') {
