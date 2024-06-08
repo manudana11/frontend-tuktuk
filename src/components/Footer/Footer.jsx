@@ -3,7 +3,7 @@ import './Footer.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../features/auth/authSlice'
-import { HomeOutlined, UserOutlined } from '@ant-design/icons'
+import { HomeOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons'
 
 const Footer = () => {
   const { user } = useSelector((state) => state.auth)
@@ -30,13 +30,11 @@ const Footer = () => {
             <Link to='/home'><HomeOutlined /></Link>
           </span>
           <span>
+            <Link to='/createPost'><PlusOutlined /></Link>
+          </span>
+          <span>
           <Link to='/profile'><UserOutlined /></Link>
           </span>
-            <span onClick={() => {
-              dispatch(logout())
-            }}>
-              <Link to='/'>Logout</Link>
-            </span>
             </>
           ) : (
             <span>

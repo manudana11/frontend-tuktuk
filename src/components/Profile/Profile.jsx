@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Image, Button, Wrap, WrapItem, Center, Spinner, Card, CardBody } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { getUserById, logout } from '../../features/auth/authSlice';
@@ -12,7 +12,6 @@ const Profile = () => {
     const user = useSelector((state) => state.auth.user);
     const posts = useSelector((state) => state.posts);
 
-
     if (!user) {
         return <Spinner color="red.500" justify="center" />;
     }
@@ -21,7 +20,7 @@ const Profile = () => {
         <Wrap spacing='20px' align='center' width='100%' justify='center'>
             <WrapItem>
                 <Center>
-                    <Image borderRadius='full' boxSize='150px' src={user.profilePic ? `https://backend-tuktuk.onrender.com/${user.profilePic.substring(6)}` : 'https://imgs.search.brave.com/gV6Xy99WsNTWpgT2KUNxopKhP45u8QMrrL2DGi5HYxg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc'} alt="User profile" className="post-user-image" />
+                    <Image borderRadius='full' boxSize='150px' src={user.profilePic ? `https://backend-tuktuk.onrender.com/${user.profilePic.substring(6)}` : 'https://imgs.search.brave.com/gV6Xy99WsNTWpgT2KUNxopKhP45u8QMrrL2DGi5HYxg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc'} alt="User profile" className="post-user-image"/>
                 </Center>
             </WrapItem>
             <WrapItem>
@@ -50,9 +49,17 @@ const Profile = () => {
             </WrapItem>
             <Divider></Divider>
                 <Card>
-                    <CardBody>
-                        <Post/>
+                    <Card maxW="sm" className="post-container">
+                {user.posts.map((post) => (
+                    <CardBody key={post._id} className="profile-pics">
+                         <Image
+                            src={post.imgpost ? `https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}` : 'https://via.placeholder.com/150'}
+                            alt="profile-posts"
+                            className="profile-posts"
+                        />
                     </CardBody>
+                ))}
+            </Card>
                 </Card>
         </Wrap>
     );
