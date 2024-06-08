@@ -10,6 +10,8 @@ import Profile from './components/Profile/Profile'
 import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import Post from './components/Post/Post'
+import PrivateZone from './guards/PrivateZone'
+
 
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/createPost' element={<CreatePost />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile/>} />
+          <Route path='/profile' element={<PrivateZone><Profile/></PrivateZone>} />
           <Route path='/allposts' element={<Post />} />
         </Routes>
         <div className='space'></div>
