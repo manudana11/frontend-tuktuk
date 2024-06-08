@@ -20,9 +20,20 @@ const createPost = async (post, token) => {
   return res.data
 };
 
+const likePost = async (_id) => {
+  const token = localStorage.getItem('token')
+  const res = await axios.put(API_URL + '/likes/' + _id, {}, {
+    headers: {
+      Authorization: token
+    }
+  });
+  return res.data
+}
+
 const postsService = {
     getAllPosts,
     createPost,
+    likePost,
 };
 
 export default postsService;

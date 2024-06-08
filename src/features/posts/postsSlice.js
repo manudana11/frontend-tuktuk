@@ -21,7 +21,14 @@ export const createPost = createAsyncThunk('posts/createPost', async (post, thun
   const token = thunkAPI.getState().auth.token;
   try {
     return await postsService.createPost(post, token);
-    console.log(post, token);
+  } catch (error) {
+    console.error(error);
+  }
+})
+
+export const likePost = createAsyncThunk('posts/likePost', async (_id) => {
+  try {
+    return await postsService.likePost(_id);
   } catch (error) {
     console.error(error);
   }
@@ -43,6 +50,15 @@ export const postsSlice = createSlice({
     .addCase(getAllPosts.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
+    })
+    .addCase(likePost.fulfilled,(state, action) => {
+      const postUpdated = state.posts.map(post => {
+        if (post._id == action.payload._id) {
+          post = action.payload
+        }
+        return post
+      })
+      state.posts = postUpdated
     })
   }
 });

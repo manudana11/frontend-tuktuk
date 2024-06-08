@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPosts } from '../../features/posts/postsSlice';
+import { getAllPosts, likePost } from '../../features/posts/postsSlice';
 import './Post.scss';
 import { CommentOutlined, LikeOutlined, SendOutlined } from '@ant-design/icons';
 
@@ -39,7 +39,7 @@ const Post = () => {
                     </div>
                     <img src={`https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}`} alt="Post image" className="post-image" />
                     <div className="post-actions">
-                        <button onClick={() => handleLike(post._id)}>
+                        <button onClick={() => dispatch(likePost(post._id))}>
                             <LikeOutlined /> {post.likes.length}
                         </button>
                         <button onClick={() => handleComment(post._id)}>
