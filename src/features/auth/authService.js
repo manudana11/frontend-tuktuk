@@ -14,7 +14,7 @@ const login = async (user) => {
     localStorage.setItem('token', res.data.token);
   }
   return res.data
-}
+};
 
 const logout = async () => {
   const token = localStorage.getItem('token');
@@ -27,12 +27,18 @@ const logout = async () => {
     localStorage.clear()
   }
   return res.data
-}
+};
+
+const confirmUser = async (email) => {
+  const res = await axios.put(API_URL + '/confirm/' + email, {})
+  return res.data
+};
 
 const authService = {
   register,
   login,
   logout,
+  confirmUser,
 };
 
 export default authService;
