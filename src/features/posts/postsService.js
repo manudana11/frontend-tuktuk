@@ -40,11 +40,22 @@ const removeLikePost = async (_id) => {
   return res.data
 };
 
+const getPostById = async (_id) => {
+  const token = localStorage.getItem('token');
+  const res = await axios.get(API_URL + '/id/' + _id, {
+    headers: {
+      Authorization: token
+    }
+  })
+  return res.data
+}
+
 const postsService = {
   getAllPosts,
   createPost,
   likePost,
   removeLikePost,
+  getPostById,
 };
 
 export default postsService;

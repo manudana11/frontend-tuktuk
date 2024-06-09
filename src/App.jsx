@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import Post from './components/Post/Post'
 import UserConfirmed from './components/UserConfirmed/UserConfirmed'
+import PostDetails from './components/PostDetails/PostDetails'
 
 //PARA VER COMO TARJETITAS EL LOGIN Y EL REGISTER QUITAR EL CHAKRAPROVIDER
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/profile' element={<Profile/>} />
           <Route path='/allposts' element={<Post />} />
           <Route path='/confirm' element={<UserConfirmed />} />
+          <Route path='/postDetails/:_id' element={<PostDetails />} />
         </Routes>
         <div className='space'></div>
         <Footer/>

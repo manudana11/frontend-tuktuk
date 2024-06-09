@@ -40,6 +40,14 @@ export const removeLikePost = createAsyncThunk('posts/dislikes', async (_id) => 
   } catch (error) {
     console.error(error);
   }
+});
+
+export const getPostById = createAsyncThunk('post/getPostById', async (_id) => {
+  try {
+    return await postsService.getPostById(_id);
+  } catch (error) {
+    console.error(error);
+  }
 })
 
 export const postsSlice = createSlice({
@@ -76,6 +84,17 @@ export const postsSlice = createSlice({
         return post
       })
       state.posts = postUpdated
+    })
+    .addCase(getPostById.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getPostById.fulfilled,(state,action)=>{
+        state.status = 'succeeded';
+        state.posts = action.payload;
+    })
+    .addCase(getPostById.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
     })
   }
 });
