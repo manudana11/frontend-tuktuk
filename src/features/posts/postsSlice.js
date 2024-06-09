@@ -15,7 +15,7 @@ export const getAllPosts = createAsyncThunk('posts/getAllPosts', async () => {
     console.error(error);
     throw new Error(error.response.data.message || error.message)
   }
-})
+});
 
 export const createPost = createAsyncThunk('posts/createPost', async (post, thunkAPI) => {
   const token = thunkAPI.getState().auth.token;
@@ -24,11 +24,19 @@ export const createPost = createAsyncThunk('posts/createPost', async (post, thun
   } catch (error) {
     console.error(error);
   }
-})
+});
 
 export const likePost = createAsyncThunk('posts/likePost', async (_id) => {
   try {
     return await postsService.likePost(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const removeLikePost = createAsyncThunk('posts/dislikes', async (_id) => {
+  try {
+    return await postsService.removeLikePost(_id);
   } catch (error) {
     console.error(error);
   }
@@ -52,6 +60,15 @@ export const postsSlice = createSlice({
       state.error = action.error.message;
     })
     .addCase(likePost.fulfilled,(state, action) => {
+      const postUpdated = state.posts.map(post => {
+        if (post._id == action.payload._id) {
+          post = action.payload
+        }
+        return post
+      })
+      state.posts = postUpdated
+    })
+    .addCase(removeLikePost.fulfilled,(state, action) => {
       const postUpdated = state.posts.map(post => {
         if (post._id == action.payload._id) {
           post = action.payload

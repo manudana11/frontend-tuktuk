@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPosts, likePost } from '../../features/posts/postsSlice';
+import { getAllPosts, likePost, removeLikePost } from '../../features/posts/postsSlice';
 import './Post.scss';
-import { CommentOutlined, LikeOutlined, SendOutlined } from '@ant-design/icons';
+import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
 
 const Post = () => {
 
-    const { posts, status, error } = useSelector((state) => state.posts)
+    const { posts, status, error } = useSelector((state) => state.posts);
+    const userId = useSelector((state) => state.auth.user._id);
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -28,7 +29,17 @@ const Post = () => {
 
     return (
         <div>
-            {posts.map((post) => (
+        {posts.map((post) => {
+            const hasLiked = post.likes.includes(userId);
+            const handleLikeClick = () => {
+                if (hasLiked) {
+                    dispatch(removeLikePost(post._id));
+                } else {
+                    dispatch(likePost(post._id));
+                }
+            };
+
+            return (
                 <div key={post._id} className="post">
                     <div className="post-header">
                         <div className="post-user">
@@ -39,8 +50,8 @@ const Post = () => {
                     </div>
                     <img src={`https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}`} alt="Post image" className="post-image" />
                     <div className="post-actions">
-                        <button onClick={() => dispatch(likePost(post._id))}>
-                            <LikeOutlined /> {post.likes.length}
+                        <button onClick={handleLikeClick}>
+                            {hasLiked ? <LikeFilled /> : <LikeOutlined />} {post.likes.length}
                         </button>
                         <button onClick={() => handleComment(post._id)}>
                             <CommentOutlined /> {post.commentsIds.length}
@@ -59,8 +70,9 @@ const Post = () => {
                         ))}
                     </div>
                 </div>
-            ))}
-        </div>
+            );
+        })}
+    </div>
     )
 }
 

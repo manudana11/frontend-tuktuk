@@ -28,12 +28,23 @@ const likePost = async (_id) => {
     }
   });
   return res.data
-}
+};
+
+const removeLikePost = async (_id) => {
+  const token = localStorage.getItem('token')
+  const res = await axios.put(API_URL + '/dislikes/' + _id, {}, {
+    headers: {
+      Authorization: token
+    }
+  });
+  return res.data
+};
 
 const postsService = {
-    getAllPosts,
-    createPost,
-    likePost,
+  getAllPosts,
+  createPost,
+  likePost,
+  removeLikePost,
 };
 
 export default postsService;
