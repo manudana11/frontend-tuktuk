@@ -29,16 +29,15 @@ const Post = () => {
 
     return (
         <div>
-        {posts.map((post) => {
-            const hasLiked = post.likes.includes(userId);
-            const handleLikeClick = () => {
-                if (hasLiked) {
-                    dispatch(removeLikePost(post._id));
-                } else {
-                    dispatch(likePost(post._id));
-                }
+            {posts.map((post) => {
+                const hasLiked = post.likes.includes(userId);
+                const handleLikeClick = () => {
+                    if (hasLiked) {
+                        dispatch(removeLikePost(post._id));
+                    } else {
+                        dispatch(likePost(post._id));
+                    }
             };
-
             return (
                 <div key={post._id} className="post">
                     <div className="post-header">
@@ -51,8 +50,8 @@ const Post = () => {
                     <img src={`https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}`} alt="Post image" className="post-image" />
                     <div className="post-actions">
                         <button onClick={handleLikeClick}>
-                            {hasLiked ? <LikeFilled /> : <LikeOutlined />} {post.likes.length}
-                        </button>
+                                {hasLiked ? <LikeFilled /> : <LikeOutlined />} {post.likes.length}
+                            </button>
                         <button onClick={() => handleComment(post._id)}>
                             <CommentOutlined /> {post.commentsIds.length}
                         </button>
@@ -70,9 +69,8 @@ const Post = () => {
                         ))}
                     </div>
                 </div>
-            );
-        })}
-    </div>
+            )})}
+        </div>
     )
 }
 
