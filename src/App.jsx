@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import Post from './components/Post/Post'
 import PrivateZone from './guards/PrivateZone'
+import NotFound from './components/NotFound/NotFound'
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<PrivateZone><Profile/></PrivateZone>} />
           <Route path='/allposts' element={<Post />} />
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
         <div className='space'></div>
         <Footer/>
