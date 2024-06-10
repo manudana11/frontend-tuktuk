@@ -75,6 +75,9 @@ export const postsSlice = createSlice({
         return post
       })
       state.posts = postUpdated
+      if (state.post && state.post._id === action.payload._id) {
+        state.post = action.payload;
+      }
     })
     .addCase(removeLikePost.fulfilled,(state, action) => {
       const postUpdated = state.posts.map(post => {
@@ -84,6 +87,9 @@ export const postsSlice = createSlice({
         return post
       })
       state.posts = postUpdated
+      if (state.post && state.post._id === action.payload._id) {
+        state.post = action.payload;
+      }
     })
     .addCase(getPostById.pending, (state) => {
       state.status = 'loading';
