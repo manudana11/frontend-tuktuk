@@ -90,7 +90,7 @@ export const postsSlice = createSlice({
     })
     .addCase(getPostById.fulfilled,(state,action)=>{
         state.status = 'succeeded';
-        state.posts = action.payload;
+        state.post = action.payload;
     })
     .addCase(getPostById.rejected, (state, action) => {
       state.status = 'failed';

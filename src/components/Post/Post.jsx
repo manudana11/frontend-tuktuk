@@ -4,16 +4,18 @@ import { getAllPosts, likePost, removeLikePost } from '../../features/posts/post
 import './Post.scss';
 import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
 import { Spinner } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const Post = () => {
 
     const { posts, status, error } = useSelector((state) => state.posts);
     const userId = useSelector((state) => state.auth.user._id);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getAllPosts())
-    }, [])
+    }, [dispatch])
 
 
     if (status === 'loading') {
@@ -39,6 +41,9 @@ const Post = () => {
                         dispatch(likePost(post._id));
                     }
             };
+            const handleCommentClick = () => {
+                navigate(`/postDetails/${post._id}`);
+            };
             return (
                 <div key={post._id} className="post">
                     <div className="post-header">
@@ -53,7 +58,7 @@ const Post = () => {
                         <button onClick={handleLikeClick}>
                                 {hasLiked ? <LikeFilled /> : <LikeOutlined />} {post.likes.length}
                             </button>
-                        <button onClick={() => handleComment(post._id)}>
+                        <button onClick={handleCommentClick}>
                             <CommentOutlined /> {post.commentsIds.length}
                         </button>
                         <button onClick={() => handleSend(post._id)}>

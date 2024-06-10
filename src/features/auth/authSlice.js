@@ -82,7 +82,7 @@ export const confirmUser = createAsyncThunk('auth/confirm', async (email) => {
 })
 export const getUserById = createAsyncThunk('auth/getUserById', async () => {
   try {
-    return await authService.getUserById
+    return await authService.getUserById();
   } catch (error) {
     console.error(error);
   }
