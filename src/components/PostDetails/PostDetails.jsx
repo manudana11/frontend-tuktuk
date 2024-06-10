@@ -26,6 +26,10 @@ const PostDetails = () => {
         return <div>No posts available.</div>;
     }
 
+    if (posts.length==0) {
+        return <div>No post available</div>
+    }
+
     return (
         <div>
             <h1>Post Details</h1>
@@ -36,7 +40,12 @@ const PostDetails = () => {
                     <p><strong>Created At:</strong> {new Date(posts.createdAt).toLocaleString()}</p>
                     <p><strong>Updated At:</strong> {new Date(posts.updatedAt).toLocaleString()}</p>
                     <p><strong>Likes:</strong> {posts.likes.length}</p>
-                    <p><strong>Comments:</strong> {posts.commentsIds.length}</p>
+                    {posts.commentsIds.map((comment) => (
+                            <div key={comment._id} className="comment">
+                                <strong>{comment.userId.userName}:</strong> {comment.bodyText}
+                            </div>
+                        ))}
+                    {/* <p><strong>Comments:</strong> {posts.commentsIds}</p> */}
                 </div>
         </div>
     )
