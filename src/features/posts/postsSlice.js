@@ -48,7 +48,7 @@ export const getPostById = createAsyncThunk('post/getPostById', async (_id) => {
   } catch (error) {
     console.error(error);
   }
-})
+});
 
 export const postsSlice = createSlice({
   name: "posts",
