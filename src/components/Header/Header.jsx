@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Flex, Image, Spacer } from '@chakra-ui/react'
 import { MessageOutlined } from '@ant-design/icons'
 import './Header.scss'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
         <Image src="src/assets/Logo-tuktuk-pj.png" alt="logo-Tuktuk" className='logo-header' maxWidth="50px" margin="0 auto"/>
       </Box>
       <Box>
-        <MessageOutlined style={{ fontSize: '24px' }} />
+        <Link to='/chat'><MessageOutlined style={{ fontSize: '24px' }} /></Link>
       </Box>
     </Flex>
   )

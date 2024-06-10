@@ -8,6 +8,7 @@ const user = JSON.parse(localStorage.getItem("user")) || null;
 const initialState = {
   user: user,
   token: token,
+  posts: [],
   isError: false,
   isSuccess: false,
   message: ''
@@ -40,6 +41,18 @@ export const authSlice = createSlice({
       state.user = null,
       state.token = ''
     })
+    .addCase(getLoggedUser.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getLoggedUser.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.user = action.payload;
+      state.posts = action.payload.postsIds; 
+    })
+    .addCase(getLoggedUser.rejected, (state, action) => {
+      state.status = 'failed';
+      state.isError = action.error.message;
+    });
   }
 });
 
@@ -82,10 +95,20 @@ export const confirmUser = createAsyncThunk('auth/confirm', async (email) => {
 })
 export const getUserById = createAsyncThunk('auth/getUserById', async () => {
   try {
-    return await authService.getUserById
+    return await authService.getUserById();
   } catch (error) {
     console.error(error);
   }
 });
+
+export const getLoggedUser = createAsyncThunk('auth/getLoggedUser', async () => {
+  try {
+    return await authService.getLoggedUser()
+  } catch (error) {
+    console.error(error);
+  }
+})
+
+
 
 export const { reset } = authSlice.actions;

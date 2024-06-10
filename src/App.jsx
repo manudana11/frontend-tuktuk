@@ -6,6 +6,7 @@ import Welcome from './components/Welcome/Welcome'
 import Home from './components/Home/Home'
 import Register from './components/Register/Register'
 import Login from './components/Login/Login'
+import Chat from './components/Chat/Chat'
 import Profile from './components/Profile/Profile'
 import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
@@ -29,6 +30,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/createPost' element={<CreatePost />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/chat' element={<Chat />} />
           <Route path='/profile' element={<PrivateZone><Profile/></PrivateZone>} />
           <Route path='/allposts' element={<Post />} />
           <Route path='/confirm' element={<UserConfirmed />} />
