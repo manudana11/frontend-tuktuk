@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPosts, likePost, removeLikePost } from '../../features/posts/postsSlice';
 import './Post.scss';
-import { CommentOutlined, LikeOutlined, SendOutlined } from '@ant-design/icons';
+import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
+import { Spinner } from '@chakra-ui/react';
 
 const Post = () => {
 
