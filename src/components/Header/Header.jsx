@@ -1,14 +1,18 @@
 import React from 'react'
+import { Box, Flex, Image, Spacer } from '@chakra-ui/react'
+import { MessageOutlined } from '@ant-design/icons'
+import './Header.scss'
 
 const Header = () => {
   return (
-    <div className='header-container'>
-      <nav className='header-div'>
-        <div className='link-div'>
-          
-        </div>
-      </nav>
-    </div>
+    <Flex as="header" width="100%" alignItems="center" >
+      <Box flex="1" textAlign="center">
+        <Image src="src/assets/Logo-tuktuk-pj.png" alt="logo-Tuktuk" className='logo-header' maxWidth="50px" margin="0 auto"/>
+      </Box>
+      <Box>
+        <MessageOutlined style={{ fontSize: '24px' }} />
+      </Box>
+    </Flex>
   )
 }
 

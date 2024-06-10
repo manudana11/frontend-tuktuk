@@ -11,8 +11,7 @@ const Home = () => {
     dispatch(getAllPosts())
   },[])
   return (
-    <div>
-        Home
+    <div className='header-container'>
         <Post />
     </div>
     

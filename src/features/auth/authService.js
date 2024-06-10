@@ -34,11 +34,19 @@ const confirmUser = async (email) => {
   return res.data
 };
 
+const getUserById = async (token) => {
+  const res = await axios.get(API_URL + '/id/'+ _id, {
+    headers: {
+      Authorization:token
+    }
+  })
+  return res.data
+}
+
 const authService = {
   register,
   login,
   logout,
-  confirmUser,
 };
 
 export default authService;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPosts, likePost, removeLikePost } from '../../features/posts/postsSlice';
 import './Post.scss';
-import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
+import { CommentOutlined, LikeOutlined, SendOutlined } from '@ant-design/icons';
 
 const Post = () => {
 
@@ -16,7 +16,7 @@ const Post = () => {
 
 
     if (status === 'loading') {
-        return <div>Loading...</div>;
+        return <Spinner color="red.500" justify="center" />;
     }
 
     if (status === 'failed') {

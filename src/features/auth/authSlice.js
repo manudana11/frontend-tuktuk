@@ -23,6 +23,7 @@ export const authSlice = createSlice({
       state.message = ''
     }
   },
+  
   extraReducers : (builder) => {
     builder 
     .addCase(login.fulfilled, (state, action)=>{
@@ -79,5 +80,12 @@ export const confirmUser = createAsyncThunk('auth/confirm', async (email) => {
     console.error(error);
   }
 })
+export const getUserById = createAsyncThunk('auth/getUserById', async () => {
+  try {
+    return await authService.getUserById
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 export const { reset } = authSlice.actions;
