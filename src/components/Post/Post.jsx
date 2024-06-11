@@ -56,15 +56,16 @@ const Post = () => {
                     <img src={`https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}`} alt="Post image" className="post-image" />
                     <div className="post-actions">
                         <button onClick={handleLikeClick}>
-                                {hasLiked ? <LikeFilled /> : <LikeOutlined />} {post.likes.length}
+                                {hasLiked ? <LikeFilled /> : <LikeOutlined />}
                             </button>
                         <button onClick={handleCommentClick}>
-                            <CommentOutlined /> {post.commentsIds.length}
+                            <CommentOutlined />
                         </button>
                         <button onClick={() => handleSend(post._id)}>
                             <SendOutlined />
                         </button>
                     </div>
+                    <p className='likes'><strong>{post.likes.length} people like your post</strong></p>
                     <div className="post-caption">Caption: {post.caption}</div>
                     <div className="post-date">{new Date(post.createdAt).toLocaleString()}</div>
                     <div className="post-comments">

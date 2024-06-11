@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: #fafafa;
@@ -8,7 +7,6 @@ body {
     justify-content: center;
 }
   
-/* Estilos del contenedor del post */
 .post {
     background-color: #fff;
     border: 1px solid #dbdbdb;
@@ -18,7 +16,6 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos del encabezado del post */
 .post-header {
     display: flex;
     align-items: center;
@@ -48,7 +45,6 @@ body {
     color: gray;
 }
 
-/* Estilos de la imagen del post */
 .post-image {
     width: 100%;
     border-bottom: 1px solid #dbdbdb;
@@ -57,10 +53,9 @@ body {
     object-fit: cover;
 }
 
-/* Estilos de los botones */
 .post-actions {
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
     padding: 10px;
     border-top: 1px solid #dbdbdb;
 }
@@ -72,6 +67,7 @@ body {
     font-size: 16px;
     display: flex;
     align-items: center;
+    margin: 0px 10px;
 }
 
 .post-actions button:focus {
@@ -82,7 +78,6 @@ body {
     color: #0095f6;
 }
 
-/* Estilos del pie de foto */
 .post-caption, .post-location, .post-date {
     padding: 10px;
     font-size: 14px;
@@ -101,7 +96,6 @@ body {
     font-size: 12px;
 }
 
-/* Estilos de los comentarios */
 .post-comments {
     padding: 10px;
 }
