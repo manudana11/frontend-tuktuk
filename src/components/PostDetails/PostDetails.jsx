@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getPostById, likePost, removeLikePost } from '../../features/posts/postsSlice';
 import { createComment } from '../../features/comments/commentSlice';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
 
 const PostDetails = () => {
@@ -12,6 +12,8 @@ const PostDetails = () => {
     const token = useSelector((state) => state.auth.token);
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState('');
+    const navigate = useNavigate();
+
     console.log(token)
     useEffect(() => {
         dispatch(getPostById(_id))
@@ -42,9 +44,12 @@ const PostDetails = () => {
     const handleAddComment = async () => {
         if (commentText.trim() !== '') {
             try {
-                await dispatch(createComment({  postId: `${post._id}`,userId: userId, bodyText: commentText}, token));
-                console.log(post._id)
-                setCommentText('');
+                await dispatch(createComment({  postId: `${post._id}`,userId: userId, bodyText: commentText}, token)).then(() => {
+                    console.log(post._id)
+                    setCommentText('');
+                    dispatch(getPostById(_id))
+                })
+                
             } catch (error) {
                 console.error(error);
             }
