@@ -82,6 +82,11 @@ const unFollow = async (_id) => {
     console.error(error);
     throw error
   }
+};
+
+const getUserByName = async (name) => {
+  const res = await axios.get(API_URL + '/getByName/' + name)
+  return res.data;
 }
 
 
@@ -94,6 +99,7 @@ const authService = {
   getLoggedUser,
   follow,
   unFollow,
+  getUserByName,
 };
 
 export default authService;
