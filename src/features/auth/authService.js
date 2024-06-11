@@ -54,6 +54,36 @@ const getLoggedUser = async () => {
   return res.data  
 };
 
+const follow = async (_id) => {
+  const token = localStorage.getItem('token') || null;
+  try {
+    const res = await axios.put(API_URL + '/follow/'+ _id, {}, {
+      headers: {
+        Authorization:token
+      }
+    });
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+const unFollow = async (_id) => {
+  const token = localStorage.getItem('token') || null;
+  try {
+    const res = await axios.put(API_URL + '/unfollow/' + _id, {}, {
+      headers: {
+        Authorization:token
+      }
+    })
+    return res.data
+  } catch (error) {
+    console.error(error);
+    throw error
+  }
+}
+
 
 const authService = {
   register,
@@ -61,7 +91,9 @@ const authService = {
   logout,
   confirmUser,
   getUserById,
-  getLoggedUser
+  getLoggedUser,
+  follow,
+  unFollow,
 };
 
 export default authService;

@@ -107,6 +107,22 @@ export const getLoggedUser = createAsyncThunk('auth/getLoggedUser', async () => 
   } catch (error) {
     console.error(error);
   }
+});
+
+export const follow = createAsyncThunk('auth/follow', async(_id) => {
+  try {
+    return await authService.follow(_id)
+  } catch (error) {
+    console.error(error);
+  }
+})
+
+export const unFollow = createAsyncThunk('auth/unfollow', async (_id) => {
+  try {
+    return await authService.unFollow(_id)
+  } catch (error) {
+    console.error(error);
+  }
 })
 
 
