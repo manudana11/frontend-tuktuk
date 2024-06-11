@@ -17,9 +17,15 @@ const Profile = () => {
         dispatch(getLoggedUser());
     }, [dispatch]);
 
+
     const handleFollow = () => {
-        dispatch(follow(user._id));
-    };
+        if(follow){
+            dispatch(unFollow(user._id))
+        }else{
+            dispatch(follow(user._id))
+        }
+    }
+
 
     if (!user) {
         return <Spinner color="red.500" justify="center" />;
