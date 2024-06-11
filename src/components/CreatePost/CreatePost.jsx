@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from '../../features/posts/postsSlice';
 import { notification } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
     const token = useSelector((state) => state.auth.token);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ const CreatePost = () => {
         
         dispatch(createPost(formData, token)).then(res => {
             notification.success({message: 'Post created successfully!'})
+            navigate('/home');
         })
         .catch((error) => {
             console.error(error)

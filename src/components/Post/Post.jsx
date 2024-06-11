@@ -32,7 +32,7 @@ const Post = () => {
 
     return (
         <div>
-            {posts.map((post) => {
+            {[...posts].reverse().map((post) => {
                 const hasLiked = post.likes.includes(userId);
                 const handleLikeClick = () => {
                     if (hasLiked) {
