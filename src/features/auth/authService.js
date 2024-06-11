@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_URL = "https://backend-tuktuk.onrender.com/users";
 
+
 const register = async (user) => {
   const res = await axios.post(API_URL, user);
   return res.data;
@@ -35,20 +36,32 @@ const confirmUser = async (email) => {
 };
 
 const getUserById = async (token) => {
-  const res = await axios.get(API_URL + '/id/'+ _id, {
+  const res = await axios.get(API_URL + '/id/', {
     headers: {
       Authorization:token
     }
   })
   return res.data
-}
+};
+
+const getLoggedUser = async () => {
+  const token = localStorage.getItem('token');
+  const res = await axios.get(API_URL + '/logged', {
+    headers:{
+      Authorization:token
+    }
+  })
+  return res.data  
+};
+
 
 const authService = {
   register,
   login,
   logout,
-  getUserById,
   confirmUser,
+  getUserById,
+  getLoggedUser
 };
 
 export default authService;
