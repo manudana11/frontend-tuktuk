@@ -53,12 +53,12 @@ const Profile = () => {
                     {user.following.length} Follows
                 </Center>
             </WrapItem>
-            <Divider></Divider>
-            {posts && posts.map((post) => (
+            <Divider/>
+            {posts && posts.map((post) => ( 
                     <Card maxW="sm" className="post-container" key={post._id}>
                         <CardBody className="profile-pics">
                         <Image
-                                src={`https://backend-tuktuk.onrender.com/` + post.imgpost || 'https://via.placeholder.com/150'}
+                                src={`https://backend-tuktuk.onrender.com/${post.imgpost.substring(6)}` || 'https://via.placeholder.com/150'}
                                 alt="profile-posts"
                                 className="profile-posts"
                             />
