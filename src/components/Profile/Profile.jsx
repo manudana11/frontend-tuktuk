@@ -18,13 +18,16 @@ const Profile = () => {
     }, [dispatch]);
 
 
-    const handleFollow = () => {
-        if(follow){
-            dispatch(unFollow(user._id))
-        }else{
-            dispatch(follow(user._id))
+    const isFollowing = user.followers.includes(user._id);
+
+    const handleFollow = (e) => {
+        e.preventDefault();
+        if (isFollowing) {
+            dispatch(unFollow(user._id));
+        } else {
+            dispatch(follow(user._id));
         }
-    }
+    };
 
 
     if (!user) {
@@ -45,7 +48,7 @@ const Profile = () => {
                 </Center>
             </WrapItem>
             <Center>
-                <Button colorScheme='teal' variant='outline' onClick={handleFollow}>Follow</Button>
+                <Button colorScheme='teal' variant='outline' onClick={handleFollow}>{isFollowing ? 'Unfollow' : 'Follow'}</Button>
             </Center>
             <Divider/>
             <WrapItem>
