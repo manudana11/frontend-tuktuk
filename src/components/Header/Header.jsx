@@ -4,6 +4,7 @@ import { MessageOutlined, SearchOutlined } from '@ant-design/icons'
 import './Header.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Divider } from 'antd'
 
 
 
@@ -33,6 +34,7 @@ const Header = () => {
         <Link to='/chat'><MessageOutlined style={{ fontSize: '24px' }} /></Link>
       </Box>
     </Flex>
+    <Divider/>
     </div>
   )
 }
