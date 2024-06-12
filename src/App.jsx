@@ -25,7 +25,7 @@ function App() {
   return (
     <ChakraProvider>
       <BrowserRouter>
-        <Header/>
+          <Header/>
         <Routes>
           <Route path='/' element={<Welcome/>} />
           <Route path='/home' element={<Home/>} />
