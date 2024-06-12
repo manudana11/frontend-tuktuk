@@ -50,6 +50,14 @@ export const getPostById = createAsyncThunk('post/getPostById', async (_id) => {
   }
 });
 
+export const deletePost = createAsyncThunk('post/deletePost', async (_id) => {
+  try {
+    return await postsService.deletePost(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,

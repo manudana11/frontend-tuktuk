@@ -46,9 +46,19 @@ const getPostById = async (_id) => {
     headers: {
       Authorization: token
     }
-  })
+  });
   return res.data
-}
+};
+
+const deletePost = async (post, _id) => {
+  const token = localStorage.getItem('token');
+  const res = await axios.delete(API_URL + '/id/' + _id, post, {
+    headers: {
+      Authorization: token
+    }
+  });
+  return res.data
+};
 
 const postsService = {
   getAllPosts,
@@ -56,6 +66,7 @@ const postsService = {
   likePost,
   removeLikePost,
   getPostById,
+  deletePost,
 };
 
 export default postsService;
