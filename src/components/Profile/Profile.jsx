@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Image, Button, Wrap, WrapItem, Center, Spinner, Card, CardBody } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { getLoggedUser, getUserById, logout } from '../../features/auth/authSlice';
+import { follow, getLoggedUser, getUserById, logout, unFollow } from '../../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Divider } from 'antd';
 import Post from '../Post/Post';
@@ -16,6 +16,19 @@ const Profile = () => {
     useEffect(() => {
         dispatch(getLoggedUser());
     }, [dispatch]);
+
+
+    const isFollowing = user.followers.includes(user._id);
+
+    const handleFollow = (e) => {
+        e.preventDefault();
+        if (isFollowing) {
+            dispatch(unFollow(user._id));
+        } else {
+            dispatch(follow(user._id));
+        }
+    };
+
 
     if (!user) {
         return <Spinner color="red.500" justify="center" />;
@@ -35,7 +48,7 @@ const Profile = () => {
                 </Center>
             </WrapItem>
             <Center>
-                <Button colorScheme='teal' variant='outline'>Follow</Button>
+                <Button colorScheme='teal' variant='outline' onClick={handleFollow}>{isFollowing ? 'Unfollow' : 'Follow'}</Button>
             </Center>
             <Divider/>
             <WrapItem>

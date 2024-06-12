@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.scss'
 import {ChakraProvider} from '@chakra-ui/react'
 import Header from './components/Header/Header'
+import Search from './components/Search/Search'
 import Welcome from './components/Welcome/Welcome'
 import Home from './components/Home/Home'
 import Register from './components/Register/Register'
@@ -36,6 +37,7 @@ function App() {
           <Route path='/confirm' element={<UserConfirmed />} />
           <Route path='/postDetails/:_id' element={<PostDetails />} />
           <Route path='*' element={<NotFound/>}/>
+          <Route path='/search' element={<Search/>}/>
         </Routes>
         <div className='space'></div>
         <Footer/>
