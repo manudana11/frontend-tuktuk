@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image, Button, Wrap, WrapItem, Center, Spinner, Card, CardBody } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { follow, getLoggedUser, getUserById, logout, unFollow } from '../../features/auth/authSlice';
@@ -12,20 +12,26 @@ const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user) || null;
     const posts = useSelector((state) => state.auth.posts);
+    const [isFollowing, setIsFollowing] = useState(false);
 
     useEffect(() => {
         dispatch(getLoggedUser());
     }, [dispatch]);
 
-
-    const isFollowing = user.followers.includes(user._id);
-
-    const handleFollow = (e) => {
-        e.preventDefault();
-        if (isFollowing) {
-            dispatch(unFollow(user._id));
-        } else {
-            dispatch(follow(user._id));
+    const handleFollow = async (e) => {
+        try {
+            e.preventDefault();
+            if (isFollowing) {
+                await dispatch(unFollow(user._id)).then(() => setIsFollowing(false)).then(() => {
+                    dispatch(getLoggedUser())
+                })
+            } else {
+                dispatch(follow(user._id)).then(() => setIsFollowing(true)).then(() => {
+                    dispatch(getLoggedUser())
+                })
+            }
+        } catch (error) {
+            console.error(error);
         }
     };
 
