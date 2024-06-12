@@ -16,6 +16,7 @@ import UserConfirmed from './components/UserConfirmed/UserConfirmed'
 import PostDetails from './components/PostDetails/PostDetails'
 import PrivateZone from './guards/PrivateZone'
 import NotFound from './components/NotFound/NotFound'
+import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 
 
 
@@ -36,6 +37,7 @@ function App() {
           <Route path='/allposts' element={<Post />} />
           <Route path='/confirm' element={<UserConfirmed />} />
           <Route path='/postDetails/:_id' element={<PostDetails />} />
+          <Route path='/profileDetails' element={<ProfileDetails/>} />
           <Route path='*' element={<NotFound/>}/>
           <Route path='/search' element={<Search/>}/>
         </Routes>
