@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { register } from '../../features/auth/authSlice';
 import './Register.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { notification } from 'antd';
 
 const Register = () => {
@@ -23,6 +23,8 @@ const Register = () => {
         });
     };
 
+const navigate = useNavigate();
+
     const onSubmit = (e) => {
         e.preventDefault();
         const newFormData = new FormData();
@@ -35,6 +37,7 @@ const Register = () => {
         dispach(register(newFormData))
         .then((res) => {
             notification.success({ message: 'Registration successful!' });
+            navigate('/login');
         })
         .catch((error) => {
             console.error(error);
