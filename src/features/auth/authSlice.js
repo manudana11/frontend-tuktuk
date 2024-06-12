@@ -55,6 +55,7 @@ export const authSlice = createSlice({
       state.isError = action.error.message;
     })
     .addCase(getUserByName.fulfilled, (state, action) => {
+      state.status = 'succeeded'
       state.userProfile = action.payload
     })
   }
