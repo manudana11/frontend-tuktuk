@@ -85,8 +85,18 @@ const unFollow = async (_id) => {
 };
 
 const getUserByName = async (name) => {
-  const res = await axios.get(API_URL + '/getByName/' + name)
+  const token = localStorage.getItem('token');
+  try {
+    const res = await axios.get(API_URL + '/getByName/' + name, {}, {
+      headers:{
+        Authorization:token
+      }
+    })
   return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+  
 }
 
 

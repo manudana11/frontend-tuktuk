@@ -1,0 +1,14 @@
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10vh;  
+    height: 100vh;
+    text-align: center;
+  
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  

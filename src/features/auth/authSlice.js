@@ -11,7 +11,8 @@ const initialState = {
   posts: [],
   isError: false,
   isSuccess: false,
-  message: ''
+  message: '',
+  userProfile:null
 };
 
 export const authSlice = createSlice({
@@ -52,7 +53,11 @@ export const authSlice = createSlice({
     .addCase(getLoggedUser.rejected, (state, action) => {
       state.status = 'failed';
       state.isError = action.error.message;
-    });
+    })
+    .addCase(getUserByName.fulfilled, (state, action) => {
+      state.status = 'succeeded'
+      state.userProfile = action.payload
+    })
   }
 });
 

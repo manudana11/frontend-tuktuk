@@ -4,7 +4,8 @@ import { getAllPosts, likePost, removeLikePost } from '../../features/posts/post
 import './Post.scss';
 import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
 import { Spinner } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getLoggedUser } from '../../features/auth/authSlice';
 
 const Post = () => {
 
@@ -29,6 +30,15 @@ const Post = () => {
     if (status === 'succeeded' && posts.length === 0) {
         return <div>No posts available.</div>;
     }
+
+    const searchUser = (user) => {
+        if (user._id === userId) {
+          navigate('/profile');
+        } else {
+          navigate(`/profile/${user.name}`);
+        }
+      }
+      
 
     return (
         <div>
