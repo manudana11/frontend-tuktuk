@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostById, likePost, removeLikePost } from '../../features/posts/postsSlice';
+import { deletePost, getPostById, likePost, removeLikePost } from '../../features/posts/postsSlice';
 import { createComment } from '../../features/comments/commentSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CommentOutlined, LikeFilled, LikeOutlined, SendOutlined } from '@ant-design/icons';
@@ -57,6 +57,15 @@ const PostDetails = () => {
         }
     };
 
+    const handleDeletePost = async () => {
+        try {
+            await dispatch(deletePost({_id: `${post._id}`}, token))
+            navigate('/home');
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <div className="post-details-container">
             <h1>Post Details</h1>
@@ -89,6 +98,9 @@ const PostDetails = () => {
                         <strong>{comment.userId.userName}:</strong> {comment.bodyText}
                     </div>
                 ))}
+            </div>
+            <div className="delete-post-container">
+                <button className="delete-post-button" onClick={handleDeletePost}>Delete Post</button>
             </div>
         </div>
     )

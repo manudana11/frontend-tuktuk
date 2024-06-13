@@ -50,9 +50,10 @@ const getPostById = async (_id) => {
   return res.data
 };
 
-const deletePost = async (post, _id) => {
+const deletePost = async (postData) => {
+  const { _id } = postData;
   const token = localStorage.getItem('token');
-  const res = await axios.delete(API_URL + '/id/' + _id, post, {
+  const res = await axios.delete(API_URL + '/id/' + _id, {
     headers: {
       Authorization: token
     }

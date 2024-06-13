@@ -93,3 +93,19 @@
     display: block;
     margin-bottom: 5px;
 }
+
+.delete-post-container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-post-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4d4f;
+    color: white;
+    cursor: pointer;
+}

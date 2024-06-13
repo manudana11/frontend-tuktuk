@@ -13,8 +13,20 @@ const createComment = async (commentData) => {
     return res.data
 };
 
+const addCommentResponse = async (responseData) => {
+    const { bodyText, userId } = responseData;
+    const token = localStorage.getItem('token');
+    const res = await axios.put(API_URL + '/response' + _id, {bodyText, userId}, {}, {
+        headers: {
+            Authorization: token
+        }
+    });
+    return res.data
+}
+
 const commentsService = {
     createComment,
+    addCommentResponse,
 };
 
 export default commentsService;
