@@ -67,7 +67,7 @@ const Header = () => {
   const handleChange = (e) => {
     setSearchName(e.target.value);
     if (e.key === 'Enter' && searchName.trim()) {
-      navigate('/search/' + searchName);
+      navigate('/search' + searchName);
       setSearchVisible(false);
     }
   };

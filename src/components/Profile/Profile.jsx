@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { follow, getLoggedUser, getUserById, logout, unFollow } from '../../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Divider } from 'antd';
-import Post from '../Post/Post';
+import './Profile.scss'
 
 
 
@@ -14,10 +14,17 @@ const Profile = () => {
     const posts = useSelector((state) => state.auth.posts);
     const [isFollowing, setIsFollowing] = useState(false);
 
-
     useEffect(() => {
         dispatch(getLoggedUser());
-    }, [dispatch]);
+    }, [dispatch, isFollowing]);
+
+    useEffect(() => {
+        if (user) {
+            // Suponiendo que user.following es una lista de IDs de los usuarios que sigue el usuario actual
+            const followingIds = user.following.map(follow => follow._id); // Si el array contiene objetos con una propiedad _id
+            setIsFollowing(followingIds.includes(user._id));
+        }
+    }, [user]);
 
     const handleFollow = async (e) => {
         try {
@@ -27,7 +34,7 @@ const Profile = () => {
                     dispatch(getLoggedUser())
                 })
             } else {
-                dispatch(follow(user._id)).then(() => setIsFollowing(true)).then(() => {
+                await dispatch(follow(user._id)).then(() => setIsFollowing(true)).then(() => {
                     dispatch(getLoggedUser())
                 })
             }
@@ -35,7 +42,13 @@ const Profile = () => {
             console.error(error);
         }
     };
-
+    
+    //   useEffect(() => {
+    //     if (user._id, isFollowing) {
+    //         setIsFollowing(user.following.includes(user._id));
+    //     }
+    // }, [user._id]);
+    
     if (!user) {
         return <Spinner color="red.500" justify="center" />;
     }
