@@ -20,8 +20,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (user) {
-            // Suponiendo que user.following es una lista de IDs de los usuarios que sigue el usuario actual
-            const followingIds = user.following.map(follow => follow._id); // Si el array contiene objetos con una propiedad _id
+            const followingIds = user.following.map(follow => follow._id); 
             setIsFollowing(followingIds.includes(user._id));
         }
     }, [user]);
@@ -43,11 +42,6 @@ const Profile = () => {
         }
     };
     
-    //   useEffect(() => {
-    //     if (user._id, isFollowing) {
-    //         setIsFollowing(user.following.includes(user._id));
-    //     }
-    // }, [user._id]);
     
     if (!user) {
         return <Spinner color="red.500" justify="center" />;
