@@ -21,7 +21,6 @@ import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 
 
 function App() {
-
   return (
     <ChakraProvider>
       <BrowserRouter>
