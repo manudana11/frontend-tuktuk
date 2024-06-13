@@ -42,20 +42,20 @@ La aplicación permite a los usuarios interactuar entre sí mediante publicacion
    ```
 
 2. Navega al directorio del proyecto:
+    ```bash
+    cd <nombre-del-proyecto>
+    ```
 
-```bash
-cd <nombre-del-proyecto>
-```
 3. Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm install
-```
 4. Inicia la aplicación:
+    ```bash
+    npm start
+    ```
 
-```bash
-npm start
-```
 La aplicación estará disponible en http://localhost:3000.
 
 ## Navegación de Rutas
