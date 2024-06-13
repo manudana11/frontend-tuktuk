@@ -17,6 +17,7 @@ import PostDetails from './components/PostDetails/PostDetails'
 import PrivateZone from './guards/PrivateZone'
 import NotFound from './components/NotFound/NotFound'
 import ProfileDetails from './components/ProfileDetails/ProfileDetails'
+import { useSelector } from 'react-redux'
 
 
 
