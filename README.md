@@ -1,4 +1,4 @@
-# Social Network App
+# Red Social TukTuk
 
 En este proyecto hemos querido desarrollar una red social con React y Redux, que permite a los usuarios registrarse, iniciar sesión, crear publicaciones, comentar, dar likes, y más. Se utiliza React Router para la navegación, y el proyecto incluye múltiples componentes que gestionan distintas funcionalidades de la red social.
 
